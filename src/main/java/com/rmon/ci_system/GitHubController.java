@@ -5,19 +5,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import org.json.simple.JSONObject;
+
+
 
 @RestController
 public class GitHubController {
 
     @GetMapping("/")
     public String index() {
-        return "Index";
+        return "Index Dude";
     }
 
-
-    @PostMapping
-    public void recieveWebHookNotification(@RequestBody String notification) {
+    @PostMapping("/hooks")
+    public String recieveWebHookNotification(@RequestBody String notification) {
+        return("Notification received: " + notification);
     }
 
 
