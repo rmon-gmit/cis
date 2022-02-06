@@ -2,6 +2,9 @@ package com.rmon.ci_system;
 
 import java.util.Arrays;
 
+import com.rmon.pipeline.Pipeline;
+import com.rmon.pipeline.Stage;
+import com.rmon.pipeline.Step;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,7 +15,20 @@ import org.springframework.context.annotation.Bean;
 public class CiSystemApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CiSystemApplication.class, args);
+//		SpringApplication.run(CiSystemApplication.class, args);
+
+		Step step = new Step();
+		step.addCommand("TESTCOMMAND");
+
+		Stage stage = new Stage("TestStage");
+		stage.addStep(step);
+
+		Pipeline pipeline = new Pipeline("TestPipeline", "docker-agent");
+		pipeline.addStage(stage);
+		System.out.println("Running main");
+
+
+		pipeline.start();
 	}
 
 	@Bean
