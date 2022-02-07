@@ -1,5 +1,6 @@
 package com.rmon.pipeline;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,11 +8,10 @@ import java.util.List;
 public class Stage implements Serializable {
 
     private List<Step> steps = new ArrayList();
-    public String stageName;
-    public int numberOfSteps;
+    public String name;
 
-    public Stage(String stageName) {
-        this.stageName = stageName;
+    public Stage(String name) {
+        setName(name);
     }
 
     public boolean executeStage() {
@@ -19,26 +19,22 @@ public class Stage implements Serializable {
         for (Step step : steps) {
             // if condition is met...
             System.out.println("Running stage");
-            step.runCommands();
+            try {
+                step.runCommands();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             // else skip
         }
         return true;
     }
 
-    public String getStageName() {
-        return stageName;
+    public String getName() {
+        return name;
     }
 
-    public void setStageName(String stageName) {
-        this.stageName = stageName;
-    }
-
-    public int getNumberOfSteps() {
-        return numberOfSteps;
-    }
-
-    public void setNumberOfSteps(int numberOfSteps) {
-        this.numberOfSteps = numberOfSteps;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Step> getSteps() {

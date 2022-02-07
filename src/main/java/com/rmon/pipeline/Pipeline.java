@@ -6,13 +6,12 @@ import java.util.List;
 
 public class Pipeline implements Serializable {
 
-    private String pipelineName;
-    private int numberOfStages;
-    private List<Stage> stages = new ArrayList();
+    private String name;
     private String agent;
+    private List<Stage> stages = new ArrayList();
 
-    public Pipeline(String pipelineName, String agent) {
-        setPipelineName(pipelineName);
+    public Pipeline(String name, String agent) {
+        setName(name);
         setAgent(agent);
     }
 
@@ -39,20 +38,12 @@ public class Pipeline implements Serializable {
 
     }
 
-    public String getPipelineName() {
-        return pipelineName;
+    public String getName() {
+        return name;
     }
 
-    public void setPipelineName(String pipelineName) {
-        this.pipelineName = pipelineName;
-    }
-
-    public int getNumberOfStages() {
-        return numberOfStages;
-    }
-
-    public void setNumberOfStages(int numberOfStages) {
-        this.numberOfStages = numberOfStages;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAgent() {

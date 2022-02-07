@@ -18,7 +18,7 @@ public class CiSystemApplication {
 //		SpringApplication.run(CiSystemApplication.class, args);
 
 		Step step = new Step();
-		step.addCommand("TESTCOMMAND");
+		step.addCommand("cd \"C:\" && dir");
 
 		Stage stage = new Stage("TestStage");
 		stage.addStep(step);
