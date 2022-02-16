@@ -15,37 +15,24 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class CiSystemApplication {
 
-	public static void main(String[] args) {
-//		SpringApplication.run(CiSystemApplication.class, args);
+    public static void main(String[] args) {
+        SpringApplication.run(CiSystemApplication.class, args);
+    }
 
-		Step step = new Step();
-		step.addCommand("cd \"C:\" && dir");
+    @Bean
+    public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
+        return args -> {
 
-		Stage stage = new Stage("TestStage");
-		stage.addStep(step);
+            System.out.println("Let's inspect the beans provided by Spring Boot:");
 
-		Pipeline pipeline = new Pipeline("TestPipeline", "docker-agent");
-		pipeline.addStage(stage);
-		System.out.println("Running main");
+            String[] beanNames = ctx.getBeanDefinitionNames();
+            Arrays.sort(beanNames);
+            for (String beanName : beanNames) {
+                System.out.println(beanName);
+            }
 
-
-		pipeline.start();
-	}
-
-	@Bean
-	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-		return args -> {
-
-			System.out.println("Let's inspect the beans provided by Spring Boot:");
-
-			String[] beanNames = ctx.getBeanDefinitionNames();
-			Arrays.sort(beanNames);
-			for (String beanName : beanNames) {
-				System.out.println(beanName);
-			}
-
-		};
-	}
+        };
+    }
 
 }
 
