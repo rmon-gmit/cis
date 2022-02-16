@@ -7,7 +7,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.*;
+
 public class Step implements Serializable {
+
+    private static final Logger logger = LogManager.getLogger(Step.class);
 
     private List<String> commands = new ArrayList();
     private boolean skip = false;
@@ -18,6 +22,7 @@ public class Step implements Serializable {
     public void runCommands() {
         for (String command : commands) {
             try {
+                logger.info("Trying command: {}..", command);
                 ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", command);
                 builder.redirectErrorStream(true);
                 Process p = builder.start();

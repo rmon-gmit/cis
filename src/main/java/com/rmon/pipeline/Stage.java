@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.*;
+
 public class Stage implements Serializable {
+    private static final Logger logger = LogManager.getLogger(Stage.class);
 
     private List<Step> steps = new ArrayList();
     private boolean skip = false;
@@ -15,6 +18,7 @@ public class Stage implements Serializable {
     }
 
     public void executeStage() {
+        logger.info("Starting Stage: '{}'", name);
         for (Step step : steps) {
             if (!step.isSkip()) {
                 step.runCommands();
