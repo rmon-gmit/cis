@@ -12,22 +12,22 @@ class StageTest {
     }
 
     @Test
-    void executeStage() {
+    void executeStageTest() {
     }
 
     @Test
-    void getName() {
+    void getNameTest() {
     }
 
     @Test
-    void addStep() {
+    void addStepTest() {
     }
 
     @Test
-    void isSkip() {
+    void isSkipTest() {
     }
 
     @Test
-    void setSkip() {
+    void setSkipTest() {
     }
 }

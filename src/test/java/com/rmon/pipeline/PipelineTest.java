@@ -12,19 +12,19 @@ class PipelineTest {
     }
 
     @Test
-    void addStage() {
+    void addStageTest() {
     }
 
     @Test
-    void start() {
+    void startTest() {
     }
 
     @Test
-    void stop() {
+    void stopTest() {
     }
 
     @Test
-    void pause() {
+    void pauseTest() {
     }
 
     @Test

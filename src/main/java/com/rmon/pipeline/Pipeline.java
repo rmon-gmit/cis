@@ -8,13 +8,12 @@ import java.util.List;
 import org.apache.logging.log4j.*;
 
 public class Pipeline implements Serializable {
+    private static final Logger logger = LogManager.getLogger(Pipeline.class);
 
     private String name;
     private String agent;
     private State state = State.STOPPED;
     private List<Stage> stages = new ArrayList();
-
-    private static final Logger logger = LogManager.getLogger(Pipeline.class);
 
     public Pipeline(String name, String agent) {
         setName(name);

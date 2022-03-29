@@ -3,6 +3,7 @@ package com.rmon.ci_system;
 import java.util.Arrays;
 
 
+import com.rmon.controllers.GitHubController;
 import com.rmon.pipeline.Pipeline;
 import com.rmon.pipeline.Stage;
 import com.rmon.pipeline.Step;
@@ -11,8 +12,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@ComponentScan(basePackageClasses = GitHubController.class)
 public class CiSystemApplication {
 
     public static void main(String[] args) {
@@ -30,9 +33,7 @@ public class CiSystemApplication {
             for (String beanName : beanNames) {
                 System.out.println(beanName);
             }
-
         };
     }
-
 }
 

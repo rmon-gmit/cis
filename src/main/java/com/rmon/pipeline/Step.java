@@ -19,7 +19,8 @@ public class Step implements Serializable {
     public Step() {
     }
 
-    public void runCommands() {
+    public List<String> runCommands() {
+        List<String> output = new ArrayList();
         for (String command : commands) {
             try {
                 logger.info("Trying command: {}..", command);
@@ -33,16 +34,26 @@ public class Step implements Serializable {
                     if (line == null) {
                         break;
                     }
-                    System.out.println(line);
+
+                    output.add(line);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+        return output;
     }
 
     public void addCommand(String command) {
         commands.add(command);
+    }
+
+    public void removeCommand(int index) {
+        commands.remove(index);
+    }
+
+    public List<String> getCommands() {
+        return commands;
     }
 
     public boolean isSkip() {
