@@ -9,10 +9,16 @@ import java.util.List;
 
 import org.apache.logging.log4j.*;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 public class Step implements Serializable {
 
     private static final Logger logger = LogManager.getLogger(Step.class);
 
+    private @Id
+    @GeneratedValue
+    Long id;
     private List<String> commands = new ArrayList();
     private boolean skip = false;
 
@@ -34,7 +40,6 @@ public class Step implements Serializable {
                     if (line == null) {
                         break;
                     }
-
                     output.add(line);
                 }
             } catch (IOException e) {

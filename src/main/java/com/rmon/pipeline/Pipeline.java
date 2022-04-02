@@ -7,9 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.logging.log4j.*;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 public class Pipeline implements Serializable {
     private static final Logger logger = LogManager.getLogger(Pipeline.class);
 
+    private @Id
+    @GeneratedValue
+    Long id;
     private String name;
     private String agent;
     private State state = State.STOPPED;
